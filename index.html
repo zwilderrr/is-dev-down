@@ -1,7 +1,11 @@
 <html>
 	<head></head>
-	<body>
-		<h1 id="status" style="font-family: monospace"></h1>
+	<body style="padding-left: 1vw">
+		<h1 id="status" style="font-family: monospace; margin-bottom: 4px"></h1>
+		<h3 style="font-family: monospace; text-decoration: none; margin-top: 0">
+			-
+			<a id="author"></a>
+		</h3>
 		<footer
 			style="
 				font-family: monospace;
@@ -15,7 +19,7 @@
 			<p>
 				A <a href="https://zackwilder.com">zack wilder</a> production |
 				<a
-					href="https://twitter.com/intent/tweet?text=%40BlobStars_NFT%2C%20is%20dev%20down%3F%0A%3Cyour%20response%20here%3E"
+					href="https://twitter.com/intent/tweet?text=%40BlobStars_NFT%2C%20is%20dev%20down%3F%0A%3Cyour%20response%20here%3E%0A%0A&url=https%3A%2F%2Fisdevdown.info"
 					target="_blank"
 					>submit an entry</a
 				>
@@ -24,29 +28,50 @@
 		</footer>
 	</body>
 	<script>
-		const STATUSES = [
-			"yes lol",
-			"it works for me?",
-			"why do you even have to ask?",
-			"only for you",
-			"you'll only know once you push to prod",
-			"yes but only because you're trying to be productive",
-			"try not asking such deep philosophical questions about the world",
-			"no, but it will be once *you know who* deploys to prod",
-			"only a little bit",
-			"if you start crying, maybe",
-			"no, but pretty close to yes soon",
-			"*evil laugh*",
-		];
+		const AUTHORS = ["BlobStars_NFT", "anonymous"];
+		const STATUSES = {
+			BlobStars_NFT: [
+				"yes lol",
+				"it works for me?",
+				"why do you even have to ask?",
+				"only for you",
+				"you'll only know once you push to prod",
+				"yes but only because you're trying to be productive",
+				"try not asking such deep philosophical questions about the world",
+				"no, but it will be once *you know who* deploys to prod",
+				"only a little bit",
+				"if you start crying, maybe",
+				"*evil laugh*",
+			],
+			anonymous: [
+				"idk, it's been a while, and I feel it coming",
+				"no, but pretty close to yes soon",
+			],
+		};
 
-		function getStatus() {
-			const i = Math.floor(Math.random() * STATUSES.length);
-			return STATUSES[i];
+		function getRandomNumber(n) {
+			return Math.floor(Math.random() * n);
+		}
+
+		function getAuthorStatus() {
+			const author = AUTHORS[getRandomNumber(AUTHORS.length)];
+			const author_responses = STATUSES[author];
+			const status = author_responses[getRandomNumber(author_responses.length)];
+			return { author, status };
 		}
 
 		function setStatus() {
-			const el = document.querySelector("#status");
-			el.textContent = getStatus();
+			const { author, status } = getAuthorStatus();
+			const authorEl = document.querySelector("#author");
+			const statusEl = document.querySelector("#status");
+
+			authorEl.textContent = author;
+			if (author !== "anonymous") {
+				authorEl.setAttribute("target", "_blank");
+				authorEl.setAttribute("href", `https://twitter.com/${author}`);
+			}
+
+			statusEl.textContent = status;
 		}
 
 		setStatus();
