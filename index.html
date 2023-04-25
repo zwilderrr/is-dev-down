@@ -1,0 +1,54 @@
+<html>
+	<head></head>
+	<body>
+		<h1 id="status" style="font-family: monospace"></h1>
+		<footer
+			style="
+				font-family: monospace;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 10px;
+				text-align: center;
+			"
+		>
+			<p>
+				A <a href="https://zackwilder.com">zack wilder</a> production |
+				<a
+					href="https://twitter.com/intent/tweet?text=%40BlobStars_NFT%2C%20is%20dev%20down%3F%0A%3Cyour%20response%20here%3E"
+					target="_blank"
+					>submit an entry</a
+				>
+			</p>
+			<p>&copy; 2023 All rights reserved</p>
+		</footer>
+	</body>
+	<script>
+		const STATUSES = [
+			"yes lol",
+			"it works for me?",
+			"why do you even have to ask?",
+			"only for you",
+			"you'll only know once you push to prod",
+			"yes but only because you're trying to be productive",
+			"try not asking such deep philosophical questions about the world",
+			"no, but it will be once *you know who* deploys to prod",
+			"only a little bit",
+			"if you start crying, maybe",
+			"no, but pretty close to yes soon",
+			"*evil laugh*",
+		];
+
+		function getStatus() {
+			const i = Math.floor(Math.random() * STATUSES.length);
+			return STATUSES[i];
+		}
+
+		function setStatus() {
+			const el = document.querySelector("#status");
+			el.textContent = getStatus();
+		}
+
+		setStatus();
+	</script>
+</html>
