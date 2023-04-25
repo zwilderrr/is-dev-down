@@ -1,9 +1,9 @@
 <html>
 	<head></head>
 	<body style="padding-left: 1vw">
-		<h1 id="status" style="font-family: monospace; margin-bottom: 4px"></h1>
+		<h1 id="status" style="font-family: monospace; margin-bottom: 8px"></h1>
 		<h3 style="font-family: monospace; text-decoration: none; margin-top: 0">
-			-
+			by
 			<a id="author"></a>
 		</h3>
 		<footer
@@ -19,7 +19,7 @@
 			<p>
 				A <a href="https://zackwilder.com">zack wilder</a> production |
 				<a
-					href="https://twitter.com/intent/tweet?text=%40BlobStars_NFT%2C%20is%20dev%20down%3F%0A%3Cyour%20response%20here%3E%0A%0A&url=https%3A%2F%2Fisdevdown.info"
+					href="https://twitter.com/zwilderrr/status/1650917949987758090"
 					target="_blank"
 					>submit an entry</a
 				>
@@ -28,9 +28,9 @@
 		</footer>
 	</body>
 	<script>
-		const AUTHORS = ["BlobStars_NFT", "anonymous"];
+		const AUTHORS = ["zwilderrr", "anonymous"];
 		const STATUSES = {
-			BlobStars_NFT: [
+			zwilderrr: [
 				"yes lol",
 				"it works for me?",
 				"why do you even have to ask?",
@@ -65,10 +65,12 @@
 			const authorEl = document.querySelector("#author");
 			const statusEl = document.querySelector("#status");
 
-			authorEl.textContent = author;
 			if (author !== "anonymous") {
 				authorEl.setAttribute("target", "_blank");
 				authorEl.setAttribute("href", `https://twitter.com/${author}`);
+				authorEl.textContent = `@${author}`;
+			} else {
+				authorEl.textContent = "anonymous";
 			}
 
 			statusEl.textContent = status;
