@@ -100,7 +100,7 @@ async function updateVisitCount() {
     document.getElementById(
       "visit-count"
     ).innerHTML = `This page has been viewed <strong>${body.padStart(
-      6,
+      7,
       "0"
     )}</strong> times!`;
   } catch (error) {
