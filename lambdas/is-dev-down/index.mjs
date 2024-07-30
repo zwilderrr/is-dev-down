@@ -17,9 +17,6 @@ export const handler = async event => {
     const result = await dynamoDB.update(params).promise();
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify(result.Attributes.count),
     };
   } catch (error) {
