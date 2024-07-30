@@ -99,7 +99,10 @@ async function updateVisitCount() {
     const { body } = await response.json();
     document.getElementById(
       "visit-count"
-    ).innerHTML = `You are visitor <strong>${body.padStart(6, "0")}</strong>`;
+    ).innerHTML = `This page has been viewed <strong>${body.padStart(
+      6,
+      "0"
+    )}</strong> times!`;
   } catch (error) {
     console.error("Error updating visit count:", error);
   }
